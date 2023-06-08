@@ -1,0 +1,45 @@
+
+/* Class = "UILabel"; text = "Chat"; ObjectID = "04n-g3-kid"; */
+"04n-g3-kid.text" = "Chat";
+
+/* Class = "UIButton"; configuration.title = "Simple"; ObjectID = "75u-5V-C7S"; */
+"75u-5V-C7S.configuration.title" = "Simple";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "75u-5V-C7S"; */
+"75u-5V-C7S.normalTitle" = "Button";
+
+/* Class = "UIButton"; configuration.title = "Simple"; ObjectID = "GJB-U5-Foq"; */
+"GJB-U5-Foq.configuration.title" = "Simple";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "GJB-U5-Foq"; */
+"GJB-U5-Foq.normalTitle" = "Button";
+
+/* Class = "UITextField"; placeholder = "  Type your question"; ObjectID = "NSY-vt-mzp"; */
+"NSY-vt-mzp.placeholder" = "  Type your question";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "Ot5-ZY-Dho"; */
+"Ot5-ZY-Dho.normalTitle" = "Button";
+
+/* Class = "UIButton"; configuration.title = "Novel"; ObjectID = "aRt-3b-bsS"; */
+"aRt-3b-bsS.configuration.title" = "Novel";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "aRt-3b-bsS"; */
+"aRt-3b-bsS.normalTitle" = "Button";
+
+/* Class = "UIButton"; configuration.title = "Creative"; ObjectID = "k4M-q6-6yW"; */
+"k4M-q6-6yW.configuration.title" = "Creative";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "k4M-q6-6yW"; */
+"k4M-q6-6yW.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "\"Write me a song with romantic storybbbbbbbbbbbbbbbbb\""; ObjectID = "kxZ-Hw-DIB"; */
+"kxZ-Hw-DIB.text" = "\"Write me a song with romantic storybbbbbbbbbbbbbbbbb\"";
+
+/* Class = "UILabel"; text = "Ask me anything"; ObjectID = "lJF-Jp-Nsb"; */
+"lJF-Jp-Nsb.text" = "Ask me anything";
+
+/* Class = "UIButton"; configuration.title = "Standard"; ObjectID = "tOn-IN-k19"; */
+"tOn-IN-k19.configuration.title" = "Standard";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "tOn-IN-k19"; */
+"tOn-IN-k19.normalTitle" = "Button";

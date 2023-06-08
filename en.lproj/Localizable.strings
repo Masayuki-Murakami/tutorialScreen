@@ -1,0 +1,19 @@
+/* 
+  Localizable.strings
+  TutorialScreen
+
+  Created by 村上匡志 on 2023-06-08.
+  
+*/
+
+"Chat" = "Chat";
+"AskMeAnything" = "Ask me anything";
+"Q1" = "Write me a song with romantic story";
+"Q2" = "Generate a product sprint for UX";
+"Q3" = "What is the duty of being iOS developer";
+"Q4" = "What is the most famous attraction in Vancuver";
+"Q5" = "Which country colonize Canada in War II history?";
+"Q6" = "Can AI robot replace UIUX designers?";
+"textField" = "   Type your question";
+"history" = "History";
+"setting" = "Setting";
