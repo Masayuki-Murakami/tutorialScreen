@@ -15,6 +15,7 @@
 		F528ACC22A164F6000D67C0B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F528ACC02A164F6000D67C0B /* LaunchScreen.storyboard */; };
 		F54C26EF2A320475007AF3A7 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F54C26F12A320475007AF3A7 /* Localizable.strings */; };
 		F54C26F62A320D4C007AF3A7 /* SampleQModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F54C26F52A320D4C007AF3A7 /* SampleQModel.swift */; };
+		F54C26F82A338560007AF3A7 /* Mulish-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F54C26F72A338560007AF3A7 /* Mulish-VariableFont_wght.ttf */; };
 		F551F5572A30E7AE001C543E /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F551F5562A30E7AE001C543E /* TableViewCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -32,6 +33,7 @@
 		F54C26F32A32053F007AF3A7 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		F54C26F42A32053F007AF3A7 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		F54C26F52A320D4C007AF3A7 /* SampleQModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleQModel.swift; sourceTree = "<group>"; };
+		F54C26F72A338560007AF3A7 /* Mulish-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Mulish-VariableFont_wght.ttf"; sourceTree = "<group>"; };
 		F551F5562A30E7AE001C543E /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -75,6 +77,7 @@
 				F528ACBE2A164F6000D67C0B /* Assets.xcassets */,
 				F528ACC02A164F6000D67C0B /* LaunchScreen.storyboard */,
 				F528ACC32A164F6000D67C0B /* Info.plist */,
+				F54C26F72A338560007AF3A7 /* Mulish-VariableFont_wght.ttf */,
 			);
 			path = TutorialScreen;
 			sourceTree = "<group>";
@@ -141,6 +144,7 @@
 				F528ACC22A164F6000D67C0B /* LaunchScreen.storyboard in Resources */,
 				F54C26EF2A320475007AF3A7 /* Localizable.strings in Resources */,
 				F528ACBF2A164F6000D67C0B /* Assets.xcassets in Resources */,
+				F54C26F82A338560007AF3A7 /* Mulish-VariableFont_wght.ttf in Resources */,
 				F528ACBD2A164F5E00D67C0B /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

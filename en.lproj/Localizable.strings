@@ -6,14 +6,26 @@
   
 */
 
-"Chat" = "Chat";
-"AskMeAnything" = "Ask me anything";
+
+"askMeAnything" = "Ask me anything";
+
 "Q1" = "Write me a song with romantic story";
 "Q2" = "Generate a product sprint for UX";
 "Q3" = "What is the duty of being iOS developer";
 "Q4" = "What is the most famous attraction in Vancuver";
 "Q5" = "Which country colonize Canada in War II history?";
 "Q6" = "Can AI robot replace UIUX designers?";
+
 "textField" = "   Type your question";
+
+"chat" = "Chat";
 "history" = "History";
 "setting" = "Setting";
+
+"tutorialText1" = "You can watch ads to get more credit!";
+
+"category1" = "Standard";
+"category2" = "Novel";
+"category3" = "Creative";
+"category4" = "Simple";
+"category5" = "Simple";
