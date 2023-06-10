@@ -11,6 +11,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
   
   let question = SampleQuestion()
   var isInitialOverlay = false
+  var savedText: String?
   
   @IBOutlet var titleLabel: UILabel!
   
@@ -27,8 +28,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
   @IBOutlet var simpleLabel2: UILabel!
   @IBOutlet var categoryView: [UIView]!
   
-  
   @IBOutlet var textField: UITextField!
+  @IBOutlet var enterButton: UIButton!
   
   @IBOutlet var historyLabel: UILabel!
   @IBOutlet var chatLabel: UILabel!
@@ -46,6 +47,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
   @IBOutlet var triangleView2: UIView!
   @IBOutlet var nextButton1: UIButton!
   
+  @IBOutlet var turotialView3: UIView!
+  @IBOutlet var labelView3: UIView!
+  @IBOutlet var triangleView3: UIView!
+  @IBOutlet var tutorialLabel3: UILabel!
+  @IBOutlet var pointer3: UIImageView!
   
 
   override func viewDidLoad() {
@@ -56,6 +62,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
     UIDesign()
     tutorialView2.isHidden = true
+    turotialView3.isHidden = true
   }
   
   override func viewDidAppear(_ animated: Bool) {
@@ -95,10 +102,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
   func overlay1() {
     tutorialLabel1.text = NSLocalizedString("tutorialText1", comment: "")
     tutorialView1.backgroundColor = .black.withAlphaComponent(0.5)
-    let overlay: [UIView: CGFloat] = [creditImage: 10, tutorialView1: 0]
+    
+    var overlay: [(UIView, CGFloat)] = []
+    overlay.append((creditImage, 10))
+    overlay.append((tutorialView1, 0))
     self.view.applyOverlay(cutoutViewsAndCornerRadii: overlay)
     triangleView1.applyTriangleMaskLeft()
-
   }
   
   @IBAction func firattTutorialButtonTapped(_ sender: UIButton) {
@@ -114,19 +123,30 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     labelView2.layer.cornerRadius = 12
     tutorialLabel2.text = NSLocalizedString("tutorialText2", comment: "")
     
-    var overlay: [UIView: CGFloat] = [labelsBg: 0, tutorialView2: 0]
+    var overlay: [(UIView, CGFloat)] = []
+    
     
     for cell in sampleQTableView.visibleCells {
       if let cell = cell as? TableViewCell {
-        overlay[cell.bgView] = cell.bgView.layer.cornerRadius
+        overlay.append((cell.bgView, cell.bgView.layer.cornerRadius))
       }
     }
-    
-    self.view.applyOverlay(cutoutViewsAndCornerRadii: overlay)
+    overlay.append((labelsBg, 0))
+    overlay.append((tutorialView2, 0))
+    self.view.applyOverlay(cutoutViewsAndCornerRadii: (overlay))
   }
   
   
   @IBAction func categoryButtonTapped(_ sender: UIButton) {
+    tutorialLabel3.text = NSLocalizedString("tutorialText4", comment: "")
+    pointer3.contentMode = .right
+    textField.text = "   \(savedText ?? "")"
+  }
+  
+  @IBAction func enterButtonTapped(_ sender: UIButton) {
+    turotialView3.isHidden = true
+    labelsBg.isHidden = true
+    sampleQTableView.isHidden = true
   }
   
 
@@ -154,10 +174,36 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     cell.label.adjustsFontForContentSizeCategory = true
     return cell
   }
+  
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    if let cell = tableView.cellForRow(at: indexPath) as? TableViewCell {
+      tutorialView2.isHidden = true
+      turotialView3.isHidden = false
+      AskMeLabel.textColor = UIColor(named: "CellTappedOptions")
+      labelsBg.backgroundColor = .black.withAlphaComponent(0.0)
+      enterButton.backgroundColor = .black.withAlphaComponent(0.5)
+      labelView3.layer.cornerRadius = 12
+      triangleView3.applyTriangleMaskRight()
+      
+      tutorialLabel3.text = NSLocalizedString("tutorialText3", comment: "")
+      
+      var overlay: [(UIView, CGFloat)] = []
+      for view in categoryView {
+        overlay.append((view, view.layer.cornerRadius))
+      }
+      overlay.append((turotialView3, 0))
+      overlay.append((textField, 20))
+      overlay.append((enterButton, 0))
+      
+      self.view.applyOverlay(cutoutViewsAndCornerRadii: overlay)
+      savedText = cell.label.text
+    }
+  }
+  
 }
 
 extension UIView {
-  func applyOverlay(cutoutViewsAndCornerRadii: [UIView: CGFloat]) {
+  func applyOverlay(cutoutViewsAndCornerRadii: [(UIView, CGFloat)]) {
     self.layer.sublayers?.filter({ $0 is CAShapeLayer }).forEach({ $0.removeFromSuperlayer() })
     
     let overlay = CAShapeLayer()

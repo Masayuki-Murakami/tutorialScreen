@@ -23,6 +23,8 @@
 
 "tutorialText1" = "広告視聴でクレジットをゲット！";
 "tutorialText2" = "聞きたい質問をタップしてね";
+"tutorialText3" = "もしくはカテゴリーを選択し、質問する";
+"tutorialText4" = "最後に送信ボタンを押してね";
 
 "category1" = "スタンダード";
 "category2" = "小説";

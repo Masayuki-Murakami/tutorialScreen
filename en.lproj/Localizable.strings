@@ -24,7 +24,9 @@
 
 "tutorialText1" = "You can watch ads to get more credit!";
 "tutorialText2" = "Quick action to ask questions";
-
+"tutorialText3" = "Or choose a category to ask questions";
+"tutorialText4" = "Finally tap the enter button";
+ 
 "category1" = "Standard";
 "category2" = "Novel";
 "category3" = "Creative";
