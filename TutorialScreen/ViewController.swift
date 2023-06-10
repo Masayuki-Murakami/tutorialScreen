@@ -10,6 +10,7 @@ import UIKit
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
   
   let question = SampleQuestion()
+  var isInitialOverlay = false
   
   @IBOutlet var titleLabel: UILabel!
   
@@ -18,11 +19,15 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
   
   @IBOutlet var creditImage: UIImageView!
   @IBOutlet var AskMeLabel: UILabel!
-  @IBOutlet var standardButton: UIButton!
-  @IBOutlet var novelButton: UIButton!
-  @IBOutlet var creativeButon: UIButton!
-  @IBOutlet var simpleButton1: UIButton!
-  @IBOutlet var simpleButton2: UIButton!
+  
+  @IBOutlet var standardLabel: UILabel!
+  @IBOutlet var novelLabel: UILabel!
+  @IBOutlet var creativeLabel: UILabel!
+  @IBOutlet var simpleLabel1: UILabel!
+  @IBOutlet var simpleLabel2: UILabel!
+  @IBOutlet var categoryView: [UIView]!
+  
+  
   @IBOutlet var textField: UITextField!
   
   @IBOutlet var historyLabel: UILabel!
@@ -35,6 +40,13 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
   @IBOutlet var labelBgView1: UIView!
   @IBOutlet var triangleView1: UIView!
   
+  @IBOutlet var tutorialView2: UIView!
+  @IBOutlet var tutorialLabel2: UILabel!
+  @IBOutlet var labelView2: UIView!
+  @IBOutlet var triangleView2: UIView!
+  @IBOutlet var nextButton1: UIButton!
+  
+  
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -43,28 +55,33 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     sampleQTableView.delegate = self
 
     UIDesign()
+    tutorialView2.isHidden = true
   }
   
-  override func viewDidLayoutSubviews() {
-    overlay1()
+  override func viewDidAppear(_ animated: Bool) {
+    super.viewDidAppear(animated)
+    
+    if !isInitialOverlay {
+      overlay1()
+      isInitialOverlay = true
+    }
   }
   
   func UIDesign() {
-    standardButton.sizeToFit()
-    standardButton.layer.masksToBounds = true
-    novelButton.layer.masksToBounds = true
-    creativeButon.layer.masksToBounds = true
-    simpleButton1.layer.masksToBounds = true
-    simpleButton2.layer.masksToBounds = true
-    
     creditImage.layer.cornerRadius = 10
-    standardButton.layer.cornerRadius = 12
-    novelButton.layer.cornerRadius = 12
-    creativeButon.layer.cornerRadius = 12
-    simpleButton1.layer.cornerRadius = 12
-    simpleButton2.layer.cornerRadius = 12
     textField.layer.cornerRadius = 20
     labelBgView1.layer.cornerRadius = 12
+    
+    for view in categoryView {
+        view.layer.cornerRadius = 10
+        view.layer.masksToBounds = true
+    }
+    
+    standardLabel.text = NSLocalizedString("category1", comment: "")
+    novelLabel.text = NSLocalizedString("category2", comment: "")
+    creativeLabel.text = NSLocalizedString("category3", comment: "")
+    simpleLabel1.text = NSLocalizedString("category4", comment: "")
+    simpleLabel2.text = NSLocalizedString("category5", comment: "")
     
     titleLabel.text = NSLocalizedString("chat", comment: "")
     AskMeLabel.text = NSLocalizedString("askMeAnything", comment: "")
@@ -80,9 +97,38 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     tutorialView1.backgroundColor = .black.withAlphaComponent(0.5)
     let overlay: [UIView: CGFloat] = [creditImage: 10, tutorialView1: 0]
     self.view.applyOverlay(cutoutViewsAndCornerRadii: overlay)
-    triangleView1.applyTriangleMask()
+    triangleView1.applyTriangleMaskLeft()
 
   }
+  
+  @IBAction func firattTutorialButtonTapped(_ sender: UIButton) {
+    nextButton1.isHidden = true
+    tutorialView1.isHidden = true
+    tutorialView2.isHidden = false
+    
+    labelsBg.backgroundColor = .black.withAlphaComponent(0.5)
+    AskMeLabel.textColor = .white
+    
+    tutorialView2.backgroundColor = .black.withAlphaComponent(0.5)
+    triangleView2.applyTriangleMaskRight()
+    labelView2.layer.cornerRadius = 12
+    tutorialLabel2.text = NSLocalizedString("tutorialText2", comment: "")
+    
+    var overlay: [UIView: CGFloat] = [labelsBg: 0, tutorialView2: 0]
+    
+    for cell in sampleQTableView.visibleCells {
+      if let cell = cell as? TableViewCell {
+        overlay[cell.bgView] = cell.bgView.layer.cornerRadius
+      }
+    }
+    
+    self.view.applyOverlay(cutoutViewsAndCornerRadii: overlay)
+  }
+  
+  
+  @IBAction func categoryButtonTapped(_ sender: UIButton) {
+  }
+  
 
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return 6
@@ -112,6 +158,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
 extension UIView {
   func applyOverlay(cutoutViewsAndCornerRadii: [UIView: CGFloat]) {
+    self.layer.sublayers?.filter({ $0 is CAShapeLayer }).forEach({ $0.removeFromSuperlayer() })
+    
     let overlay = CAShapeLayer()
     overlay.fillColor = UIColor.black.withAlphaComponent(0.5).cgColor
     
@@ -126,16 +174,26 @@ extension UIView {
     overlay.path = overlayPath.cgPath
     overlay.fillRule = .evenOdd
     
-    self.layer.sublayers?.first(where: { $0 is CAShapeLayer })?.removeFromSuperlayer()
-    
     self.layer.addSublayer(overlay)
   }
   
-  func applyTriangleMask() {
+  func applyTriangleMaskLeft() {
     let path = UIBezierPath()
     path.move(to: CGPoint(x: bounds.width, y: bounds.height))
     path.addLine(to: CGPoint(x: bounds.width, y: 0))
     path.addLine(to: CGPoint(x: 0, y: bounds.height/2))
+    path.close()
+    
+    let shapeLayer = CAShapeLayer()
+    shapeLayer.path = path.cgPath
+    layer.mask = shapeLayer
+  }
+  
+  func applyTriangleMaskRight() {
+    let path = UIBezierPath()
+    path.move(to: CGPoint(x: 0, y: bounds.height))
+    path.addLine(to: CGPoint(x: 0, y: 0))
+    path.addLine(to: CGPoint(x: bounds.width, y: bounds.height/2))
     path.close()
     
     let shapeLayer = CAShapeLayer()
