@@ -12,6 +12,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
   let question = SampleQuestion()
   var isInitialOverlay = false
   var savedText: String?
+  var answerText: String?
   
   @IBOutlet var titleLabel: UILabel!
   
@@ -21,6 +22,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
   @IBOutlet var creditImage: UIImageView!
   @IBOutlet var AskMeLabel: UILabel!
   
+  @IBOutlet var standardButton: UIButton!
   @IBOutlet var standardLabel: UILabel!
   @IBOutlet var novelLabel: UILabel!
   @IBOutlet var creativeLabel: UILabel!
@@ -46,6 +48,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
   @IBOutlet var labelView2: UIView!
   @IBOutlet var triangleView2: UIView!
   @IBOutlet var nextButton1: UIButton!
+  @IBOutlet var overLayView: UIView!
   
   @IBOutlet var turotialView3: UIView!
   @IBOutlet var labelView3: UIView!
@@ -53,16 +56,35 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
   @IBOutlet var tutorialLabel3: UILabel!
   @IBOutlet var pointer3: UIImageView!
   
-
+  @IBOutlet var answerBgView: UIView!
+  @IBOutlet var robotImageBgView: UIView!
+  @IBOutlet var answerTextBgView: UIView!
+  @IBOutlet var answerLabel: UILabel!
+  @IBOutlet var answerCornerView: UIView!
+  @IBOutlet var questionView: UIView!
+  @IBOutlet var questionLabel: UILabel!
+  @IBOutlet var questionCornerView: UIView!
+  
+  @IBOutlet var tutorial4StackView: UIStackView!
+  @IBOutlet var tutorialView4: UIView!
+  @IBOutlet var triangleView4: UIView!
+  @IBOutlet var tutorialLabel4: UILabel!
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     
     sampleQTableView.dataSource = self
     sampleQTableView.delegate = self
-
-    UIDesign()
+    
+    textField.isUserInteractionEnabled = false
     tutorialView2.isHidden = true
     turotialView3.isHidden = true
+    answerBgView.isHidden = true
+    tutorial4StackView.isHidden = true
+    standardButton.isHidden = true
+    enterButton.isEnabled = false
+    
+    UIDesign()
   }
   
   override func viewDidAppear(_ animated: Bool) {
@@ -80,8 +102,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     labelBgView1.layer.cornerRadius = 12
     
     for view in categoryView {
-        view.layer.cornerRadius = 10
-        view.layer.masksToBounds = true
+      view.layer.cornerRadius = 10
+      view.layer.masksToBounds = true
     }
     
     standardLabel.text = NSLocalizedString("category1", comment: "")
@@ -100,14 +122,15 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
   }
   
   func overlay1() {
-    tutorialLabel1.text = NSLocalizedString("tutorialText1", comment: "")
     tutorialView1.backgroundColor = .black.withAlphaComponent(0.5)
-    
-    var overlay: [(UIView, CGFloat)] = []
-    overlay.append((creditImage, 10))
-    overlay.append((tutorialView1, 0))
-    self.view.applyOverlay(cutoutViewsAndCornerRadii: overlay)
     triangleView1.applyTriangleMaskLeft()
+    
+    let overlay: [(UIView, CGFloat)] = [(creditImage, 0), (tutorialView1, 0)]
+    self.view.applyOverlay(cutoutViewsAndCornerRadii: overlay)
+    
+    tutorialLabel1.animateText(text: NSLocalizedString("tutorialText1", comment: ""), characterDelay: 0.05) {
+      self.overLayView.isHidden = true
+    }
   }
   
   @IBAction func firattTutorialButtonTapped(_ sender: UIButton) {
@@ -121,7 +144,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     tutorialView2.backgroundColor = .black.withAlphaComponent(0.5)
     triangleView2.applyTriangleMaskRight()
     labelView2.layer.cornerRadius = 12
-    tutorialLabel2.text = NSLocalizedString("tutorialText2", comment: "")
+    tutorialLabel2.animateText(text: NSLocalizedString("tutorialText2", comment: ""), characterDelay: 0.05) {}
     
     var overlay: [(UIView, CGFloat)] = []
     
@@ -135,21 +158,54 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     overlay.append((tutorialView2, 0))
     self.view.applyOverlay(cutoutViewsAndCornerRadii: (overlay))
   }
-  
+    
   
   @IBAction func categoryButtonTapped(_ sender: UIButton) {
-    tutorialLabel3.text = NSLocalizedString("tutorialText4", comment: "")
+    tutorialLabel3.animateText(text: NSLocalizedString("tutorialText4", comment: ""), characterDelay: 0.05) {
+      self.enterButton.isEnabled = true
+    }
     pointer3.contentMode = .right
     textField.text = "   \(savedText ?? "")"
   }
   
   @IBAction func enterButtonTapped(_ sender: UIButton) {
+    overLayView.isHidden = false
+    let overlay: [(UIView, CGFloat)] = [(overLayView, 0)]
+    self.view.applyOverlay(cutoutViewsAndCornerRadii: overlay)
+    
+    enterButton.backgroundColor = .black.withAlphaComponent(0.0)
     turotialView3.isHidden = true
     labelsBg.isHidden = true
     sampleQTableView.isHidden = true
+    textField.text = ""
+    answerBgView.isHidden = false
+    
+    
+    robotImageBgView.layer.cornerRadius = 8
+    tutorialView4.layer.cornerRadius = 12
+    questionView.layer.cornerRadius = 15
+    answerTextBgView.layer.cornerRadius = 15
+    questionCornerView.layer.cornerRadius = 5
+    answerCornerView.layer.cornerRadius = 5
+    
+    triangleView4.applyTriangleMaskRight()
+    
+    questionLabel.text = savedText
+    answerLabel.animateText(text: answerText!, characterDelay: 0.01) {
+      self.overLayView.isHidden = true
+      self.tutorial4StackView.isHidden = false
+      self.answerBgView.backgroundColor = .black.withAlphaComponent(0.5)
+      self.tutorialLabel4.animateText(text: NSLocalizedString("tutorialText5", comment: ""), characterDelay: 0.05) {}
+      
+      let overlay: [(UIView, CGFloat)] = [(self.tutorial4StackView, 0), (self.answerBgView, 0)]
+      
+      self.view.applyOverlay(cutoutViewsAndCornerRadii: overlay)
+    }
+    
   }
   
-
+  // MARK: -TableViewDataSource
+  
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return 6
   }
@@ -160,6 +216,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     let textColor: [UIColor] = [UIColor(named: "CellTappedColor")!, UIColor(named: "CellTappedOptions")!]
     let questions = [question.Q1, question.Q2, question.Q3, question.Q4, question.Q5, question.Q6]
     
+    cell.selectionStyle = .none
     cell.label.text = questions[indexPath.row]
     cell.bgView.backgroundColor = cellColors[indexPath.row % 2]
     cell.label.textColor = textColor[indexPath.row % 2]
@@ -185,68 +242,28 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
       labelView3.layer.cornerRadius = 12
       triangleView3.applyTriangleMaskRight()
       
-      tutorialLabel3.text = NSLocalizedString("tutorialText3", comment: "")
+      if turotialView3.isHidden == false {
+        tutorialLabel3.animateText(text: NSLocalizedString("tutorialText3", comment: ""), characterDelay: 0.05) {
+          self.standardButton.isHidden = false
+        }
+      }
       
       var overlay: [(UIView, CGFloat)] = []
       for view in categoryView {
         overlay.append((view, view.layer.cornerRadius))
       }
+      
       overlay.append((turotialView3, 0))
       overlay.append((textField, 20))
       overlay.append((enterButton, 0))
       
       self.view.applyOverlay(cutoutViewsAndCornerRadii: overlay)
-      savedText = cell.label.text
+      
+      if let answer = Answer(rawValue: indexPath.row) {
+        answerText = answer.text
+        savedText = cell.label.text
+      }
     }
   }
-  
 }
-
-extension UIView {
-  func applyOverlay(cutoutViewsAndCornerRadii: [(UIView, CGFloat)]) {
-    self.layer.sublayers?.filter({ $0 is CAShapeLayer }).forEach({ $0.removeFromSuperlayer() })
-    
-    let overlay = CAShapeLayer()
-    overlay.fillColor = UIColor.black.withAlphaComponent(0.5).cgColor
-    
-    let overlayPath = UIBezierPath(rect: self.bounds)
-    
-    for (cutoutView, cornerRadius) in cutoutViewsAndCornerRadii {
-      let cutoutRect = self.convert(cutoutView.bounds, from: cutoutView)
-      let cutoutPath = UIBezierPath(roundedRect: cutoutRect, cornerRadius: cornerRadius)
-      overlayPath.append(cutoutPath)
-    }
-    
-    overlay.path = overlayPath.cgPath
-    overlay.fillRule = .evenOdd
-    
-    self.layer.addSublayer(overlay)
-  }
-  
-  func applyTriangleMaskLeft() {
-    let path = UIBezierPath()
-    path.move(to: CGPoint(x: bounds.width, y: bounds.height))
-    path.addLine(to: CGPoint(x: bounds.width, y: 0))
-    path.addLine(to: CGPoint(x: 0, y: bounds.height/2))
-    path.close()
-    
-    let shapeLayer = CAShapeLayer()
-    shapeLayer.path = path.cgPath
-    layer.mask = shapeLayer
-  }
-  
-  func applyTriangleMaskRight() {
-    let path = UIBezierPath()
-    path.move(to: CGPoint(x: 0, y: bounds.height))
-    path.addLine(to: CGPoint(x: 0, y: 0))
-    path.addLine(to: CGPoint(x: bounds.width, y: bounds.height/2))
-    path.close()
-    
-    let shapeLayer = CAShapeLayer()
-    shapeLayer.path = path.cgPath
-    layer.mask = shapeLayer
-  }
-}
-
-
 

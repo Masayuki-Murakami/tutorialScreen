@@ -9,12 +9,19 @@
 
 "askMeAnything" = "Ask me anything";
 
-"Q1" = "Write me a song with romantic story";
+"Q1" = "Write me a song with a romantic story";
 "Q2" = "Generate a product sprint for UX";
 "Q3" = "What is the duty of being iOS developer";
 "Q4" = "What is the most famous attraction in Vancuver";
 "Q5" = "Which country colonize Canada in War II history?";
 "Q6" = "Can AI robot replace UIUX designers?";
+
+"A1" = "In a café, love bloomed, hearts entwined, Moonlit dances, secrets defined. They weathered storms, love stood tall, A bond unbreakable, they gave their all. A tale of romance, destiny's decree, A love story woven, forever to be.";
+"A2" = "Introducing UXFlow, the revolutionary UX design tool that streamlines your workflow. With its intuitive interface and powerful features, you can effortlessly create stunning user experiences. From wireframing to prototyping, UXFlow has got you covered. Boost your productivity and create unforgettable designs with UXFlow, the ultimate UX companion. Try it today!";
+"A3" = "As an iOS developer, your duty is to design, develop, and maintain high-quality applications for Apple's iOS platform. You will work on coding, debugging, and testing to create user-friendly and efficient apps, while staying updated with the latest iOS frameworks and technologies to deliver exceptional user experiences.";
+"A4" = "One of the most famous attractions in Vancouver is Stanley Park. It is a sprawling urban park located on the western edge of downtown Vancouver and offers stunning views of the city skyline, forests, beaches, and the North Shore Mountains. Stanley Park features a variety of recreational activities, including walking and biking trails, gardens, a seawall, a miniature railway, and the Vancouver Aquarium. It is a beloved destination for both locals and visitors alike.";
+"A5" = "Canada was not colonized by any country during World War II. Canada was already an independent country at that time and played a significant role in the war as a member of the Allied forces. Canada contributed troops, resources, and support to the war effort, participating in various battles and campaigns alongside other Allied nations. However, it is important to note that Canada was a former colony of France and the United Kingdom before achieving independence.";
+"A6" = "AI can augment UI/UX designers, automating repetitive tasks and offering design suggestions. However, the creative and human-centered aspects of UI/UX design require the expertise of designers to interpret emotions, cultural nuances, and complex user interactions. Collaboration between designers and AI tools is key for optimal results.";
 
 "textField" = "   Type your question";
 
@@ -26,6 +33,7 @@
 "tutorialText2" = "Quick action to ask questions";
 "tutorialText3" = "Or choose a category to ask questions";
 "tutorialText4" = "Finally tap the enter button";
+"tutorialText5" = "Long press to select more actions";
  
 "category1" = "Standard";
 "category2" = "Novel";

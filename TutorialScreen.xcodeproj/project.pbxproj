@@ -16,6 +16,7 @@
 		F54C26EF2A320475007AF3A7 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F54C26F12A320475007AF3A7 /* Localizable.strings */; };
 		F54C26F62A320D4C007AF3A7 /* SampleQModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F54C26F52A320D4C007AF3A7 /* SampleQModel.swift */; };
 		F54C26F82A338560007AF3A7 /* Mulish-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F54C26F72A338560007AF3A7 /* Mulish-VariableFont_wght.ttf */; };
+		F54C26FA2A35BC88007AF3A7 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F54C26F92A35BC88007AF3A7 /* Extensions.swift */; };
 		F551F5572A30E7AE001C543E /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F551F5562A30E7AE001C543E /* TableViewCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -34,6 +35,7 @@
 		F54C26F42A32053F007AF3A7 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		F54C26F52A320D4C007AF3A7 /* SampleQModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleQModel.swift; sourceTree = "<group>"; };
 		F54C26F72A338560007AF3A7 /* Mulish-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Mulish-VariableFont_wght.ttf"; sourceTree = "<group>"; };
+		F54C26F92A35BC88007AF3A7 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		F551F5562A30E7AE001C543E /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -68,6 +70,7 @@
 		F528ACB42A164F5E00D67C0B /* TutorialScreen */ = {
 			isa = PBXGroup;
 			children = (
+				F54C26F92A35BC88007AF3A7 /* Extensions.swift */,
 				F54C26F52A320D4C007AF3A7 /* SampleQModel.swift */,
 				F528ACB52A164F5E00D67C0B /* AppDelegate.swift */,
 				F528ACB72A164F5E00D67C0B /* SceneDelegate.swift */,
@@ -157,6 +160,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F528ACBA2A164F5E00D67C0B /* ViewController.swift in Sources */,
+				F54C26FA2A35BC88007AF3A7 /* Extensions.swift in Sources */,
 				F551F5572A30E7AE001C543E /* TableViewCell.swift in Sources */,
 				F528ACB62A164F5E00D67C0B /* AppDelegate.swift in Sources */,
 				F54C26F62A320D4C007AF3A7 /* SampleQModel.swift in Sources */,
