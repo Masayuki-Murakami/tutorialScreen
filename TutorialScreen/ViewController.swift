@@ -14,6 +14,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
   var savedText: String?
   var answerText: String?
   
+  
   @IBOutlet var titleLabel: UILabel!
   
   @IBOutlet var labelsBg: UIView!
