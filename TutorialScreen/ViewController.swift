@@ -71,6 +71,36 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
   @IBOutlet var triangleView4: UIView!
   @IBOutlet var tutorialLabel4: UILabel!
   
+  @IBOutlet var saveAsHistoryView: UIView!
+  @IBOutlet var saveAsHistoryLabel: UILabel!
+  @IBOutlet var saveLabel1: UILabel!
+  @IBOutlet var saveLabel2: UILabel!
+  @IBOutlet var copyLabel: UILabel!
+  @IBOutlet var refreshLabel: UILabel!
+  @IBOutlet var trashLabel: UILabel!
+  @IBOutlet var shareLabel: UILabel!
+  @IBOutlet var triangleView5: UIView!
+  @IBOutlet var refreshLabelsView: UIView!
+  @IBOutlet var shareLabelsView: UIView!
+  @IBOutlet var titleLabelsView: UIView!
+  @IBOutlet var saveImageStackView: UIStackView!
+  @IBOutlet var saveImageBgView: UIView!
+  
+  @IBOutlet var tutorial5StackView: UIStackView!
+  @IBOutlet var tutorialView5: UIView!
+  @IBOutlet var triangleView6: UIView!
+  @IBOutlet var tutorialLabel5: UILabel!
+  @IBOutlet var blackBgView: UIView!
+  
+  @IBOutlet var finalView: UIView!
+  @IBOutlet var finalViewLabel: UILabel!
+  @IBOutlet var finalViewButtonLabel: UILabel!
+  @IBOutlet var viewHistoryButtonView: UIView!
+  @IBOutlet var robotBgView: UIView!
+  @IBOutlet var bottomView: UIView!
+  
+  
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     
@@ -84,6 +114,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     tutorial4StackView.isHidden = true
     standardButton.isHidden = true
     enterButton.isEnabled = false
+    saveAsHistoryView.isHidden = true
+    triangleView5.isHidden = true
+    tutorial5StackView.isHidden = true
+    blackBgView.isHidden = true
+    saveImageStackView.isUserInteractionEnabled = false
+    finalView.isHidden = true
     
     UIDesign()
   }
@@ -126,7 +162,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     tutorialView1.backgroundColor = .black.withAlphaComponent(0.5)
     triangleView1.applyTriangleMaskLeft()
     
-    let overlay: [(UIView, CGFloat)] = [(creditImage, 0), (tutorialView1, 0)]
+    let overlay: [(UIView, CGFloat)] = [(creditImage, 10), (tutorialView1, 0)]
     self.view.applyOverlay(cutoutViewsAndCornerRadii: overlay)
     
     tutorialLabel1.animateText(text: NSLocalizedString("tutorialText1", comment: ""), characterDelay: 0.05) {
@@ -175,11 +211,13 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     self.view.applyOverlay(cutoutViewsAndCornerRadii: overlay)
     
     enterButton.backgroundColor = .black.withAlphaComponent(0.0)
+    blackBgView.backgroundColor = .black.withAlphaComponent(0.0)
     turotialView3.isHidden = true
     labelsBg.isHidden = true
     sampleQTableView.isHidden = true
     textField.text = ""
     answerBgView.isHidden = false
+    blackBgView.isHidden = false
     
     
     robotImageBgView.layer.cornerRadius = 8
@@ -196,14 +234,75 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
       self.overLayView.isHidden = true
       self.tutorial4StackView.isHidden = false
       self.answerBgView.backgroundColor = .black.withAlphaComponent(0.5)
+      self.blackBgView.backgroundColor = .black.withAlphaComponent(0.5)
       self.tutorialLabel4.animateText(text: NSLocalizedString("tutorialText5", comment: ""), characterDelay: 0.05) {}
       
-      let overlay: [(UIView, CGFloat)] = [(self.tutorial4StackView, 0), (self.answerBgView, 0)]
+      let overlay: [(UIView, CGFloat)] = [(self.blackBgView, 0), (self.answerBgView, 0)]
       
       self.view.applyOverlay(cutoutViewsAndCornerRadii: overlay)
     }
-    
   }
+  
+  @IBAction func handleLongPress(_ sender: UILongPressGestureRecognizer) {
+    answerTextBgView.backgroundColor = UIColor(named: "textViewTapped")
+    answerCornerView.backgroundColor = UIColor(named: "textViewTapped")
+    overLayView.isHidden = true
+    tutorial4StackView.isHidden = true
+    saveAsHistoryView.isHidden = false
+    tutorial5StackView.isHidden = false
+    blackBgView.isHidden = false
+    triangleView5.isHidden = false
+    
+    saveAsHistoryView.layer.cornerRadius = 12
+    tutorialView5.layer.cornerRadius = 12
+    titleLabelsView.layer.cornerRadius = 12
+    refreshLabelsView.layer.cornerRadius = 12
+    shareLabelsView.layer.cornerRadius = 12
+    saveImageBgView.layer.cornerRadius = 10
+    triangleView6.applyTriangleMaskRight()
+    triangleView5.applyTriangleMaskRight()
+     
+    saveAsHistoryLabel.text = NSLocalizedString("saveAsHistory", comment: "")
+    saveLabel1.text = NSLocalizedString("save1", comment: "")
+    saveLabel2.text = NSLocalizedString("save2", comment: "")
+    copyLabel.text = NSLocalizedString("copy", comment: "")
+    refreshLabel.text = NSLocalizedString("otherAnswer", comment: "")
+    trashLabel.text = NSLocalizedString("delete", comment: "")
+    shareLabel.text = NSLocalizedString("share", comment: "")
+    
+    let overlay: [(UIView, CGFloat)] = [(self.answerBgView, 0), (self.blackBgView, 0)]
+    
+    self.view.applyOverlay(cutoutViewsAndCornerRadii: overlay)
+    
+    tutorialLabel5.animateText(text: NSLocalizedString("tutorialText6", comment: ""), characterDelay: 0.05) {
+      self.view.flashAnimation(on: self.saveImageBgView, duration: 0.8)
+    }
+  }
+  
+  @IBAction func saveButtonTapped(_ sender: UITapGestureRecognizer) {
+    tutorial5StackView.isHidden = true
+    finalView.isHidden = false
+    
+    blackBgView.backgroundColor = .white.withAlphaComponent(0.0)
+    answerBgView.backgroundColor = .white.withAlphaComponent(0.0)
+    
+    finalView.layer.cornerRadius = 12
+    viewHistoryButtonView.layer.cornerRadius = 10
+    robotBgView.layer.cornerRadius = 15
+    bottomView.layer.cornerRadius = 15
+    
+    finalViewLabel.text = NSLocalizedString("savedToHistory", comment: "")
+    finalViewButtonLabel.text = NSLocalizedString("viewHistory", comment: "")
+    
+    let overlay: [(UIView, CGFloat)] = [(self.finalView, 12)]
+    
+    self.view.applyOverlay(cutoutViewsAndCornerRadii: overlay)
+  }
+  
+  @IBAction func viewHistoryButtonTapped(_ sender: UIButton) {
+    // Write some code to transition to the history
+  }
+  
   
   // MARK: -TableViewDataSource
   

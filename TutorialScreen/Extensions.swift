@@ -53,6 +53,15 @@ extension UIView {
     layer.mask = shapeLayer
   }
   
+  func flashAnimation(on view: UIView, duration: TimeInterval) {
+    UIView.animate(withDuration: duration, delay: 0, options: [.repeat, .autoreverse, .allowUserInteraction], animations: {
+      view.alpha = 0.5
+      view.backgroundColor = .black.withAlphaComponent(0.5)
+    }, completion: { _ in
+      view.alpha = 1
+      view.backgroundColor = .black.withAlphaComponent(0.5)
+    })
+  }
 
 }
 
